@@ -2,13 +2,11 @@ document.documentElement.classList.add('js');
 
 /* =========================================================
    【最重要：リンク編集箇所】
-   下記2つのURLだけを差し替えると、ページ内の全ボタンへ反映されます。
+   下記URLを差し替えると、ページ内の全購入ボタンへ反映されます。
    purchase35：35cm定期便のStripe等の購入URL
-   product25 ：25cm家庭向けLPまたは購入ページURL
    ========================================================= */
 const LINKS = {
-  purchase35: 'https://example.com/replace-with-35cm-purchase-link',
-  product25: 'https://example.com/replace-with-25cm-product-link'
+  purchase35: 'https://example.com/replace-with-35cm-purchase-link'
 };
 
 document.querySelectorAll('[data-link]').forEach(link => {
