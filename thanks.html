@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#163f2a">
+  <title>お申込みありがとうございます｜感動さかき</title>
+
   <!-- LINEヤフー広告 計測タグ：グローバルスニペット -->
   <script async src="https://tag.flvcdn.net/lytag.js"></script>
   <script>
     window.lyDataLayer = window.lyDataLayer || [];
-
     function lytag() {
-      lyDataLayer.push(Array.from(arguments));
+      window.lyDataLayer.push(Array.from(arguments));
     }
-
     lytag({
       type: 'init',
       tagId: 'd61a92ed-025a-44c5-b0a2-9af25277044d',
@@ -20,23 +24,51 @@
     });
   </script>
 
-  <!-- LINEヤフー広告：商品購入イベント -->
+  <!--
+    購入イベントは session_id が付いている場合だけ送信します。
+    Stripeのリダイレクト先を次のURLにしてください：
+    https://kando-sakaki.hitisou-yuen.com/thanks.html?session_id={CHECKOUT_SESSION_ID}
+  -->
   <script>
-    lytag({
-      type: 'event',
-      eventType: 'purchase',
-      tagId: 'd61a92ed-025a-44c5-b0a2-9af25277044d'
-    });
+    (function () {
+      const url = new URL(window.location.href);
+      const sessionId = url.searchParams.get('session_id');
+      const looksLikeStripeSession = sessionId && sessionId.startsWith('cs_');
+
+      if (!looksLikeStripeSession) return;
+
+      const storageKey = 'ly_purchase_sent_' + sessionId;
+
+      try {
+        if (localStorage.getItem(storageKey) === '1') return;
+      } catch (e) {
+        // localStorageが使えない場合でも計測処理は続行
+      }
+
+      lytag({
+        type: 'event',
+        eventType: 'purchase',
+        tagId: 'd61a92ed-025a-44c5-b0a2-9af25277044d'
+      });
+
+      try {
+        localStorage.setItem(storageKey, '1');
+      } catch (e) {}
+
+      // 更新でpurchaseが再送されにくいよう、計測後にsession_idだけURLから外す
+      url.searchParams.delete('session_id');
+      history.replaceState(null, '', url.pathname + (url.search ? url.search : '') + url.hash);
+    })();
   </script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <meta name="theme-color" content="#163f2a">
-  <title>お申込みありがとうございます｜感動さかき</title>
-
+  <!--
+  CSS 設定
+  -->
+  
   <style>
-    *,*::before,*::after{box-sizing:border-box}
+    *,*::before,*::after{
+      box-sizing:border-box
+    }
     body{
       margin:0;
       min-width:320px;
@@ -44,30 +76,30 @@
       color:#1d211e;
       font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
       line-height:1.85;
-      letter-spacing:.02em;
+      letter-spacing:.02em
     }
     .header{
       background:#163f2a;
-      color:#fff;
+      color:#fff
     }
     .header-inner{
       width:min(calc(100% - 40px),760px);
       min-height:72px;
       margin:auto;
       display:flex;
-      align-items:center;
+      align-items:center
     }
     .brand{
       color:#fff;
       text-decoration:none;
       font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight:700;
-      letter-spacing:.1em;
+      letter-spacing:.1em
     }
     main{
       width:min(calc(100% - 40px),680px);
       margin:0 auto;
-      padding:70px 0 90px;
+      padding:70px 0 90px
     }
     .card{
       padding:42px 30px;
@@ -75,37 +107,41 @@
       border:1px solid #d9d4c8;
       border-radius:18px;
       box-shadow:0 16px 44px rgba(13,40,26,.10);
-      text-align:center;
+      text-align:center
     }
     .kicker{
       margin:0 0 12px;
       color:#a58545;
       font-size:.74rem;
       font-weight:800;
-      letter-spacing:.16em;
-      text-transform:uppercase;
+      letter-spacing:.16em
     }
     h1{
       margin:0;
       color:#163f2a;
       font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
       font-size:clamp(1.8rem,7vw,2.7rem);
-      line-height:1.45;
+      line-height:1.45
     }
     .lead{
       margin:24px 0 0;
       color:#49504b;
-      font-size:1rem;
+      font-size:1rem
     }
     .info{
       margin:30px 0 0;
       padding:22px 20px;
       background:#f3f7f3;
       border-radius:12px;
-      text-align:left;
+      text-align:left
     }
-    .info p{margin:0;color:#49504b}
-    .info p+p{margin-top:10px}
+    .info p{
+      margin:0;
+      color:#49504b
+    }
+    .info p+p{
+      margin-top:10px
+    }
     .btn{
       display:inline-flex;
       min-height:52px;
@@ -117,29 +153,29 @@
       background:#163f2a;
       color:#fff;
       text-decoration:none;
-      font-weight:700;
+      font-weight:700
     }
     .note{
       margin:24px 0 0;
       color:#727a74;
-      font-size:.82rem;
+      font-size:.82rem
     }
-    footer{
-      padding:0 20px 40px;
+    footer{padding:0 20px 40px;
       text-align:center;
       color:#727a74;
-      font-size:.75rem;
+      font-size:.75rem
     }
     @media(max-width:520px){
       main{padding:42px 0 64px}
       .card{padding:34px 22px}
     }
   </style>
+
 </head>
 <body>
   <header class="header">
     <div class="header-inner">
-      <a class="brand" href="index.html">感動さかき</a>
+      <a class="brand" href="/">感動さかき</a>
     </div>
   </header>
 
@@ -159,7 +195,7 @@
         <p><strong>お問い合わせ：</strong><a href="mailto:sakaki@xs909424.xsrv.jp">sakaki@xs909424.xsrv.jp</a></p>
       </div>
 
-      <a class="btn" href="index.html">販売ページへ戻る</a>
+      <a class="btn" href="/">販売ページへ戻る</a>
 
       <p class="note">
         このページは決済完了後に表示される購入完了ページです。
