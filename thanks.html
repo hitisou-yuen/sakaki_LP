@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- LINEヤフー広告 計測タグ：グローバルスニペット -->
+  <script async src="https://tag.flvcdn.net/lytag.js"></script>
+  <script>
+    window.lyDataLayer = window.lyDataLayer || [];
+
+    function lytag() {
+      lyDataLayer.push(Array.from(arguments));
+    }
+
+    lytag({
+      type: 'init',
+      tagId: 'd61a92ed-025a-44c5-b0a2-9af25277044d',
+      config: {
+        useCookie: true,
+        useLocalStorage: true
+      }
+    });
+  </script>
+
+  <!-- LINEヤフー広告：商品購入イベント -->
+  <script>
+    lytag({
+      type: 'event',
+      eventType: 'purchase',
+      tagId: 'd61a92ed-025a-44c5-b0a2-9af25277044d'
+    });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#163f2a">
+  <title>お申込みありがとうございます｜感動さかき</title>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    body{
+      margin:0;
+      min-width:320px;
+      background:#f7f4ed;
+      color:#1d211e;
+      font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+      line-height:1.85;
+      letter-spacing:.02em;
+    }
+    .header{
+      background:#163f2a;
+      color:#fff;
+    }
+    .header-inner{
+      width:min(calc(100% - 40px),760px);
+      min-height:72px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+    }
+    .brand{
+      color:#fff;
+      text-decoration:none;
+      font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
+      font-weight:700;
+      letter-spacing:.1em;
+    }
+    main{
+      width:min(calc(100% - 40px),680px);
+      margin:0 auto;
+      padding:70px 0 90px;
+    }
+    .card{
+      padding:42px 30px;
+      background:#fff;
+      border:1px solid #d9d4c8;
+      border-radius:18px;
+      box-shadow:0 16px 44px rgba(13,40,26,.10);
+      text-align:center;
+    }
+    .kicker{
+      margin:0 0 12px;
+      color:#a58545;
+      font-size:.74rem;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    h1{
+      margin:0;
+      color:#163f2a;
+      font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
+      font-size:clamp(1.8rem,7vw,2.7rem);
+      line-height:1.45;
+    }
+    .lead{
+      margin:24px 0 0;
+      color:#49504b;
+      font-size:1rem;
+    }
+    .info{
+      margin:30px 0 0;
+      padding:22px 20px;
+      background:#f3f7f3;
+      border-radius:12px;
+      text-align:left;
+    }
+    .info p{margin:0;color:#49504b}
+    .info p+p{margin-top:10px}
+    .btn{
+      display:inline-flex;
+      min-height:52px;
+      align-items:center;
+      justify-content:center;
+      margin-top:30px;
+      padding:13px 26px;
+      border-radius:10px;
+      background:#163f2a;
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+    }
+    .note{
+      margin:24px 0 0;
+      color:#727a74;
+      font-size:.82rem;
+    }
+    footer{
+      padding:0 20px 40px;
+      text-align:center;
+      color:#727a74;
+      font-size:.75rem;
+    }
+    @media(max-width:520px){
+      main{padding:42px 0 64px}
+      .card{padding:34px 22px}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">感動さかき</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <p class="kicker">THANK YOU</p>
+      <h1>お申込みありがとうございます。</h1>
+
+      <p class="lead">
+        「感動さかき」の定期便をお申込みいただき、ありがとうございます。<br>
+        決済内容は、ご登録のメールアドレスへ送信されるStripeからのメールでもご確認いただけます。
+      </p>
+
+      <div class="info">
+        <p><strong>初回発送：</strong>お申込み後、発送準備を進めます。</p>
+        <p><strong>以降のお届け：</strong>月末の榊交換に合わせて発送します。</p>
+        <p><strong>お問い合わせ：</strong><a href="mailto:sakaki@xs909424.xsrv.jp">sakaki@xs909424.xsrv.jp</a></p>
+      </div>
+
+      <a class="btn" href="index.html">販売ページへ戻る</a>
+
+      <p class="note">
+        このページは決済完了後に表示される購入完了ページです。
+      </p>
+    </section>
+  </main>
+
+  <footer>© 七宗遊園有限会社</footer>
+</body>
+</html>
