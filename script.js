@@ -3,10 +3,10 @@ document.documentElement.classList.add('js');
 /* =========================================================
    【最重要：リンク編集箇所】
    下記URLを差し替えると、ページ内の全購入ボタンへ反映されます。
-   purchase35：35cm定期便のStripe等の購入URL
+   purchase35：月額1,480円の35cm定期便Stripe購入URL（公開前に必ず差し替え）
    ========================================================= */
 const LINKS = {
-  purchase35: 'https://example.com/replace-with-35cm-purchase-link'
+  purchase35: 'https://buy.stripe.com/dRmcN6cnt1X1c8R72018c01'
 };
 
 document.querySelectorAll('[data-link]').forEach(link => {
